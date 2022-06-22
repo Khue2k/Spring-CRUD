@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title >Home Page</title>
+    <link rel="stylesheet" href="style.css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container-fluid text-center">
+    <h1>Add new User</h1>
+   <form th:action="@{/users/save}" method="post" th:object="${user}"
+   style="max-width: 500px;margin:0">
+       <div class="border p-3">
+           <div class="form-group row mb-3">
+               <div class="col-sm-4 col-form-label">
+                   <label>Email:</label>
+               </div>
+               <div class="col-sm-8">
+                   <input type="email" th:field="*{email}" class="form-control" name="email" required/>
+               </div>
+           </div>
+           <div class="form-group row mb-3">
+               <div class="col-sm-4 col-form-label">
+                   <label>Password:</label>
+               </div>
+               <div class="col-sm-8">
+                   <input type="text" th:field="*{password}" class="form-control" name=" password"/>
+               </div>
+           </div>
+           <div class="form-group row mb-3">
+               <div class="col-sm-4 col-form-label">
+                   <label>First Name:</label>
+               </div>
+               <div class="col-sm-8">
+                   <input type="text" th:field="*{firstName}" class="form-control" name="first_name"/>
+               </div>
+           </div>
+           <div class="form-group row mb-3">
+               <div class="col-sm-4 col-form-label">
+                   <label>Last Name:</label>
+               </div>
+               <div class="col-sm-8">
+                   <input type="text" th:field="*{lastName}" class="form-control" name="last_name"/>
+               </div>
+           </div>
+           <div class="form-group row mb-3">
+               <div class="col-sm-4 col-form-label">
+                   <label>Enabled:</label>
+               </div>
+               <div class="col-sm-8">
+                   <input type="checkbox"  name="enabled"/>
+               </div>
+           </div>
+           <div>
+              <button class="btn btn-primary m-3">Add</button>
+               <button class="btn btn-secondary m-3" onclick="cancelForm()">Cancel</button>
+           </div>
+       </div>
+
+   </form>
+</div>
+<script type="text/javascript">
+    function cancelForm(){
+        window.location="[[@{/users}]]"
+    }
+</script>
+</body>
+</html>
